@@ -1,0 +1,86 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      2213,         76]
+NotebookOptionsPosition[      1486,         55]
+NotebookOutlinePosition[      2001,         72]
+CellTagsIndexPosition[      1958,         69]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Hamiltonian Diagonalization", "Chapter",
+ CellChangeTimes->{{3.802487681929668*^9, 
+  3.802487693854628*^9}},ExpressionUUID->"475ca34f-375e-4c33-b871-\
+988b6b8aa351"],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Quadratic boson Hamiltonian - a diagonalization procedure based on standard \
+procedures from the literature\
+\>", "Section",
+ CellChangeTimes->{{3.8024876963744*^9, 
+  3.80248772531001*^9}},ExpressionUUID->"ac9985dc-81c9-4a49-b695-\
+71696c909481"],
+
+Cell[TextData[{
+ StyleBox["See project ",
+  FontSlant->"Italic"],
+ StyleBox["Resources ",
+  FontWeight->"Bold",
+  FontSlant->"Italic"],
+ StyleBox["directory ",
+  FontWeight->"Plain",
+  FontSlant->"Italic"],
+ StyleBox["for the actual documentation",
+  FontSlant->"Italic"]
+}], "Subsubsection",
+ CellChangeTimes->{{3.802487730079897*^9, 
+  3.8024877654514303`*^9}},ExpressionUUID->"dfccf3a0-0b1a-461e-aa18-\
+72c17d73554f"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{808, 911},
+WindowMargins->{{Automatic, 527}, {Automatic, 205}},
+FrontEndVersion->"12.0 for Mac OS X x86 (64-bit) (April 8, 2019)",
+StyleDefinitions->FrontEnd`FileName[{$RootDirectory, "Applications", 
+   "Mathematica.app", "Contents", "SystemFiles", "FrontEnd", "StyleSheets"}, 
+  "Times_Basavyr_Unique.nb", CharacterEncoding -> "UTF-8"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 172, 3, 61, "Chapter",ExpressionUUID->"475ca34f-375e-4c33-b871-988b6b8aa351"],
+Cell[CellGroupData[{
+Cell[777, 29, 258, 6, 89, "Section",ExpressionUUID->"ac9985dc-81c9-4a49-b695-71696c909481"],
+Cell[1038, 37, 420, 14, 40, "Subsubsection",ExpressionUUID->"dfccf3a0-0b1a-461e-aa18-72c17d73554f"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
