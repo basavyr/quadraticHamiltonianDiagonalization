@@ -34,3 +34,5 @@ The process of diagonalization is done in:
 1. Mathematica (see Wolfram Mathematica `.nb` notebooks in the project tree)
 2. Python (see python scripts attached in the project tree)
 3. *(?optional)* Javascript
+
+## Mathematica implementation
