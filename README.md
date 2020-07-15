@@ -35,6 +35,7 @@ The process of diagonalization is done in:
 2. Python (see python scripts attached in the project tree)
 3. *(?optional)* Javascript
 
+<<<<<<< HEAD
 ## Graphical representation of $\lambda$ in terms of *q-ratio*
 
 The two parameters that define the Hamiltonian are encoded into a single parameter called q-ratio ($q\equiv\frac{v}{\epsilon}$).
@@ -47,3 +48,6 @@ Every solution of the system will be a function of this ratio, so the values of 
 
 *Solution number 10*
 ![*Solution number 10*](Plot1.png)
+=======
+## Mathematica implementation
+>>>>>>> 9b57b0a16fcf0c5a578dab0cb9931e0c753b7278
