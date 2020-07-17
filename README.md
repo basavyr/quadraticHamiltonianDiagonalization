@@ -35,19 +35,30 @@ The process of diagonalization is done in:
 2. Python (see python scripts attached in the project tree)
 3. *(?optional)* Javascript
 
-<<<<<<< HEAD
 ## Graphical representation of $\lambda$ in terms of *q-ratio*
 
 The two parameters that define the Hamiltonian are encoded into a single parameter called q-ratio ($q\equiv\frac{v}{\epsilon}$).
 
 Every solution of the system will be a function of this ratio, so the values of $\Lambda$ will change with the change in $q$. In the images below, one can see the evolution of the 6th and 10th solutions of the system (with truncation order N=10).
 
-*Solution number 6*
+___
+
+### Solution number 6
 
 ![*Solution number 6*](Plot2.png)
 
-*Solution number 10*
+### Solution number 10
+
 ![*Solution number 10*](Plot1.png)
-=======
-## Mathematica implementation
->>>>>>> 9b57b0a16fcf0c5a578dab0cb9931e0c753b7278
+
+___
+
+## Analysis of $\lambda$ w.r.t the truncation order and index `i`
+
+The truncation order dictates the number of solutions from the Hamiltonian problem.
+
+![](2020-07-17-20-11-39.png)
+
+### Issue with discontinuities in $\lambda$ *oscillations* with the evolution of $q$.
+
+The *fast* change in value of $\lambda$ with a slight change of $q$ needs to be explained in terms of the actual analytic expression of that particular $lambda_i$.
