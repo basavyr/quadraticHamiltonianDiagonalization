@@ -62,3 +62,7 @@ The truncation order dictates the number of solutions from the Hamiltonian probl
 ### Issue with discontinuities in $\lambda$ *oscillations* with the evolution of $q$.
 
 The *fast* change in value of $\lambda$ with a slight change of $q$ needs to be explained in terms of the actual analytic expression of that particular $lambda_i$.
+
+### Evolution of solution $lambda_i$ with a change in truncation order N.
+
+![](2020-07-18-14-25-58.png)
