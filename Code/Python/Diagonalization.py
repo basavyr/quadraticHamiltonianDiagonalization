@@ -7,11 +7,11 @@ from numpy import linalg as LA
 def MatrixElement(n, m, e, v):
     if(n-m == 0):
         return n*e
-    elif (n-m == 2):
+    elif n-m == 2:
         return np.sqrt(m+1)*np.sqrt(m+2)*(-v)
-    elif (n-m == -2):
+    elif n-m == -2:
         return np.sqrt(m)*np.sqrt(m-1)*(-v)
-    return 'Null'
+    return 0
 
 
 def CreateMatrix02(n, e, v):
@@ -22,8 +22,11 @@ def CreateMatrix02(n, e, v):
         for j in range(n):
             item_j = 2*(j)
             res = MatrixElement(item_i, item_j, 1, 1)
-            if(res != 'Null'):
-                print(item_i, item_j, res)
+            # if(res != 0):
+            #     print(item_i, item_j, res)
+            line.append(res)
+        m.append(line)
+    return m
 
 
 def CreateMatrix13(n, e, v):
@@ -34,10 +37,12 @@ def CreateMatrix13(n, e, v):
         for j in range(n):
             item_j = 2*j+1
             res = MatrixElement(item_i, item_j, 1, 1)
-            if(res != 'Null'):
-                print(item_i, item_j, res)
+            # if(res != 0):
+            #     print(item_i, item_j, res)
+            line.append(res)
+        m.append(line)
+    return m
 
 
-CreateMatrix02(4, 1, 1)
-print('')
-CreateMatrix13(4, 1, 1)
+print(CreateMatrix02(3, 1, 1))
+print(CreateMatrix13(3, 1, 1))
