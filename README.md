@@ -45,11 +45,11 @@ ___
 
 ### Solution number 6
 
-![*Solution number 6*](Plot2.png)
+![*Solution number 6*](./Resources/Images/Plot2.png)
 
 ### Solution number 10
 
-![*Solution number 10*](Plot1.png)
+![*Solution number 10*](./Resources/Images/Plot1.png)
 
 ___
 
@@ -57,7 +57,7 @@ ___
 
 The truncation order dictates the number of solutions from the Hamiltonian problem.
 
-![](2020-07-17-20-11-39.png)
+![](./Resources/Images/2020-07-17-20-11-39.png)
 
 ### Issue with discontinuities in $\lambda$ *oscillations* with the evolution of $q$.
 
@@ -65,4 +65,4 @@ The *fast* change in value of $\lambda$ with a slight change of $q$ needs to be 
 
 ### Evolution of solution $lambda_i$ with a change in truncation order N.
 
-![](2020-07-18-14-25-58.png)
+![](./Resources/Images/2020-07-18-14-25-58.png)
