@@ -64,10 +64,20 @@ def LambdaQId(n, q, boson):
         results.append(current_x)
     return results
 
-print(LambdaQId(4,1,0))
+listOfSols=[]
+lambdaIndex=1
+for p in np.linspace(0,3,4):
+    id=lambdaIndex-1
+    lister=np.sort(LambdaQId(10,p,0))
+    lister=lister[id]
+    listOfSols.append(lister)
+print(listOfSols)
+    # for x in range(len(lister)):
+        # lister[x]=float(lister[x])
+    # print(f'{p} \n {lister}')
 
-qValues = np.linspace(0, 3, 100)
-
+qValues = np.linspace(0, 3, 4)
+print(qValues)
 
 def LambdaEvolution(n, id, boson):
     lambdas = []
@@ -80,6 +90,7 @@ def LambdaEvolution(n, id, boson):
 
 plt.plot(qValues, LambdaEvolution(10, 1, 0), '-r')
 plt.plot(qValues, LambdaEvolution(10, 2, 0), '-b')
+plt.plot(qValues, LambdaEvolution(10, 3, 0), '-b')
 # plt.plot(qValues, LambdaEvolution(4, 3, 0), '-k')
 # plt.plot(qValues, LambdaEvolution(4, 4, 0), '-m')
 plt.savefig('../../Reports/ldEvo.pdf', bbox_inches='tight')
