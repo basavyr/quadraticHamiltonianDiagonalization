@@ -78,10 +78,10 @@ def LambdaEvolution(n, id, boson):
     return lambdas
 
 
-plt.plot(qValues, LambdaEvolution(4, 1, 0), '-r')
-plt.plot(qValues, LambdaEvolution(4, 2, 0), '-b')
-plt.plot(qValues, LambdaEvolution(4, 3, 0), '-k')
-plt.plot(qValues, LambdaEvolution(4, 4, 0), '-m')
+plt.plot(qValues, LambdaEvolution(10, 1, 0), '-r')
+plt.plot(qValues, LambdaEvolution(10, 2, 0), '-b')
+# plt.plot(qValues, LambdaEvolution(4, 3, 0), '-k')
+# plt.plot(qValues, LambdaEvolution(4, 4, 0), '-m')
 plt.savefig('../../Reports/ldEvo.pdf', bbox_inches='tight')
 plt.close()
 
