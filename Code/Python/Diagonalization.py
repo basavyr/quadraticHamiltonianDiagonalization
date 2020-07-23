@@ -64,22 +64,30 @@ def LambdaQId(n, q, boson):
         results.append(current_x)
     return results
 
-listOfSols=[]
-lambdaIndex=1
-for p in np.linspace(0,3,4):
-    id=lambdaIndex-1
-    lister=np.sort(LambdaQId(10,p,0))
-    lister=lister[id]
+
+listOfSols = []
+lambdaIndex = 1
+for p in np.linspace(0, 3, 4):
+    id = lambdaIndex-1
+    lister = np.sort(LambdaQId(10, p, 0))
+    lister = lister[id]
     listOfSols.append(lister)
-print(listOfSols)
-    # for x in range(len(lister)):
-        # lister[x]=float(lister[x])
-    # print(f'{p} \n {lister}')
+# print(listOfSols)
 
-qValues = np.linspace(0, 3, 4)
-print(qValues)
 
-def LambdaEvolution(n, id, boson):
+# qValues = []
+def GenerateQs(nqs):
+    qValues=np.linspace(0, 3, nqs)
+    return qValues
+
+qValues=GenerateQs(3)
+
+# print(qValues)
+
+NQS=2
+
+def LambdaEvolution(n, id, boson,nq):
+    qValues=GenerateQs(nq)
     lambdas = []
     for q in qValues:
         ld = LambdaQId(n, q, boson)[id-1]
@@ -88,13 +96,26 @@ def LambdaEvolution(n, id, boson):
     return lambdas
 
 
-plt.plot(qValues, LambdaEvolution(10, 1, 0), '-r')
-plt.plot(qValues, LambdaEvolution(10, 2, 0), '-b')
-plt.plot(qValues, LambdaEvolution(10, 3, 0), '-b')
+def ShowSolutions(n,id):
+    qValues2=GenerateQs(2)
+    xs2=LambdaEvolution(n,id-1,0,2)
+    qValues100=GenerateQs(100)
+    xs100=LambdaEvolution(n,id-1,0,100)
+    # for i in range(n):
+    #     xs=LambdaEvolution(n,i,0)
+    #     plt.plot(qValues,xs,'r-')
+    plt.plot(qValues2,xs2,'r-')
+    plt.plot(qValues100,xs100,'b-')
+    plt.savefig('../../Reports/ldEvo.pdf', bbox_inches='tight')
+    plt.close()
+
+ShowSolutions(4,1)
+
+# plt.plot(qValues, LambdaEvolution(10, 1, 0), '-r')
+# plt.plot(qValues, LambdaEvolution(10, 2, 0), '-b')
+# plt.plot(qValues, LambdaEvolution(10, 3, 0), '-b')
 # plt.plot(qValues, LambdaEvolution(4, 3, 0), '-k')
 # plt.plot(qValues, LambdaEvolution(4, 4, 0), '-m')
-plt.savefig('../../Reports/ldEvo.pdf', bbox_inches='tight')
-plt.close()
 
 
 # m = CreateMatrix02(4, 1, 1)
