@@ -101,22 +101,25 @@ def LambdaEvolution(n, id, boson, nq):
 pathPrefix = '../../Reports/'
 
 
+def omega(q):
+    return np.sqrt(1.0 - 4.0*(np.power(q, 2)))
+
 def ShowSolutions(n, id):
-    nqReduced = 10
-    nqM = 1000
+    nqReduced=10
+    nqM=100
     for i in range(n):
-        plotname = pathPrefix+'plot-id'+str(i+1)+'.pdf'
-        fig, ax = plt.subplots()
+        plotname=pathPrefix+'plot-id'+str(i+1)+'.pdf'
+        fig, ax=plt.subplots()
         plt.xlabel('q')
         plt.ylabel(f'$\lambda_i$')
-        ax.text(0.15, 0.75, f'$\lambda_{i+1}$', horizontalalignment='center',
+        ax.text(0.15, 0.75, f'$\lambda_{i+1}$ | N={n}', horizontalalignment='center',
                 verticalalignment='center', transform=ax.transAxes)
         # ax.text(0.15, 0.85, f'$N={n}$', horizontalalignment='center',
         #         verticalalignment='center', transform=ax.transAxes)
-        qValues_Red = GenerateQs(nqReduced)
-        qValues_M = GenerateQs(nqM)
-        xs_Red = LambdaEvolution(n, i+1, 0, nqReduced)
-        xs_M = LambdaEvolution(n, i+1, 0, nqM)
+        qValues_Red=GenerateQs(nqReduced)
+        qValues_M=GenerateQs(nqM)
+        xs_Red=LambdaEvolution(n, i+1, 0, nqReduced)
+        xs_M=LambdaEvolution(n, i+1, 0, nqM)
         if(i+1 == id):
             print(f'Solution {id} for N={n}')
             print(f'Reduced | N={nqReduced}')
@@ -132,7 +135,7 @@ def ShowSolutions(n, id):
         plt.close()
 
 
-ShowSolutions(5, 2)
+ShowSolutions(10, 1)
 
 # plt.plot(qValues, LambdaEvolution(10, 1, 0), '-r')
 # plt.plot(qValues, LambdaEvolution(10, 2, 0), '-b')
