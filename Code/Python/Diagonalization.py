@@ -104,8 +104,18 @@ pathPrefix = '../../Reports/'
 def omega(q):
     return np.sqrt(1.0 - 4.0*(np.power(q, 2)))
 
+qOmegas=np.linspace(0,0.5,100)
+omegas=[]
+for x in qOmegas:
+    omegas.append(omega(x))
+
+plotname=pathPrefix+'omegaCT.pdf'
+plt.plot(qOmegas,omegas,'-b')
+plt.savefig(plotname,bbox_inches='tight')
+plt.close()
+
 def ShowSolutions(n, id):
-    nqReduced=10
+    nqReduced=4
     nqM=100
     for i in range(n):
         plotname=pathPrefix+'plot-id'+str(i+1)+'.pdf'
@@ -135,7 +145,7 @@ def ShowSolutions(n, id):
         plt.close()
 
 
-ShowSolutions(10, 1)
+# ShowSolutions(10, 1)
 
 # plt.plot(qValues, LambdaEvolution(10, 1, 0), '-r')
 # plt.plot(qValues, LambdaEvolution(10, 2, 0), '-b')
