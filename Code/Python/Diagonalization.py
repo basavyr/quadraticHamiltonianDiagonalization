@@ -77,17 +77,19 @@ for p in np.linspace(0, 3, 4):
 
 # qValues = []
 def GenerateQs(nqs):
-    qValues=np.linspace(0, 3, nqs)
+    qValues = np.linspace(0, 3, nqs)
     return qValues
 
-qValues=GenerateQs(3)
+
+qValues = GenerateQs(3)
 
 # print(qValues)
 
-NQS=2
+NQS = 2
 
-def LambdaEvolution(n, id, boson,nq):
-    qValues=GenerateQs(nq)
+
+def LambdaEvolution(n, id, boson, nq):
+    qValues = GenerateQs(nq)
     lambdas = []
     for q in qValues:
         ld = LambdaQId(n, q, boson)[id-1]
@@ -96,20 +98,41 @@ def LambdaEvolution(n, id, boson,nq):
     return lambdas
 
 
-def ShowSolutions(n,id):
-    qValues2=GenerateQs(2)
-    xs2=LambdaEvolution(n,id-1,0,2)
-    qValues100=GenerateQs(100)
-    xs100=LambdaEvolution(n,id-1,0,100)
-    # for i in range(n):
-    #     xs=LambdaEvolution(n,i,0)
-    #     plt.plot(qValues,xs,'r-')
-    plt.plot(qValues2,xs2,'r-')
-    plt.plot(qValues100,xs100,'b-')
-    plt.savefig('../../Reports/ldEvo.pdf', bbox_inches='tight')
-    plt.close()
+pathPrefix = '../../Reports/'
 
-ShowSolutions(4,1)
+
+def ShowSolutions(n, id):
+    nqReduced = 10
+    nqM = 1000
+    for i in range(n):
+        plotname = pathPrefix+'plot-id'+str(i+1)+'.pdf'
+        fig, ax = plt.subplots()
+        plt.xlabel('q')
+        plt.ylabel(f'$\lambda_i$')
+        ax.text(0.15, 0.75, f'$\lambda_{i+1}$', horizontalalignment='center',
+                verticalalignment='center', transform=ax.transAxes)
+        # ax.text(0.15, 0.85, f'$N={n}$', horizontalalignment='center',
+        #         verticalalignment='center', transform=ax.transAxes)
+        qValues_Red = GenerateQs(nqReduced)
+        qValues_M = GenerateQs(nqM)
+        xs_Red = LambdaEvolution(n, i+1, 0, nqReduced)
+        xs_M = LambdaEvolution(n, i+1, 0, nqM)
+        if(i+1 == id):
+            print(f'Solution {id} for N={n}')
+            print(f'Reduced | N={nqReduced}')
+            print(qValues_Red)
+            print(xs_Red)
+            print(f'Accurate| N={nqM}')
+            print(qValues_M)
+            print(xs_M)
+        ax.plot(qValues_Red, xs_Red, 'r-o', label=f'$n_d$={nqReduced}')
+        ax.plot(qValues_M, xs_M, 'b-', label=f'$n_d$={nqM}')
+        ax.legend(loc='best')
+        plt.savefig(plotname, bbox_inches='tight')
+        plt.close()
+
+
+ShowSolutions(5, 2)
 
 # plt.plot(qValues, LambdaEvolution(10, 1, 0), '-r')
 # plt.plot(qValues, LambdaEvolution(10, 2, 0), '-b')
