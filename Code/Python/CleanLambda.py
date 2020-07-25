@@ -34,14 +34,17 @@ def LambdaEvolution(n,id):
     for q in qValues:
         bosonH=CreateMatrix02(n,1,q)
         values,vectors=LA.eig(bosonH)
-        # print(values)
+        for x in range(len(values)):
+            values[x]=np.float(round(values[x],3))
+        print(q)
+        print(values)
         # print(values[id])
-        lambdas.append(float(values[id-1]))
-    print(lambdas)
-    plt.plot(qValues,lambdas,'-b',label=f'$\lambda$')
-    plotname=filename+'-'+str(id)+ext
-    plt.savefig(plotname,bbox_inches='tight')
-    plt.close()
+        # lambdas.append(float(values[id-1]))
+    # print(lambdas)
+    # plt.plot(qValues,lambdas,'-b',label=f'$\lambda$')
+    # plotname=filename+'-'+str(id)+ext
+    # plt.savefig(plotname,bbox_inches='tight')
+    # plt.close()
 
 LambdaEvolution(10,1)
-LambdaEvolution(10,2)
+# LambdaEvolution(10,2)
