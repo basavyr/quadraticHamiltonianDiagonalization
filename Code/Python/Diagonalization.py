@@ -76,20 +76,20 @@ for p in np.linspace(0, 3, 4):
 
 
 # qValues = []
-def GenerateQs(nqs):
-    qValues = np.linspace(0, 3, nqs)
+def GenerateQs(leftQ, rightQ, stepQ):
+    # qValues = np.linspace(0, 3, nqs)
+    qValues = np.arange(leftQ, rightQ, stepQ)
+    # print(np.arange(0,3,0.1))
     return qValues
 
 
-qValues = GenerateQs(3)
-
-# print(qValues)
+qValues = GenerateQs(0, 3, 0.05)
 
 NQS = 2
 
 
-def LambdaEvolution(n, id, boson, nq):
-    qValues = GenerateQs(nq)
+def LambdaEvolution(n, id, boson, stepQ):
+    qValues = GenerateQs(0, 3, stepQ)
     lambdas = []
     for q in qValues:
         ld = LambdaQId(n, q, boson)[id-1]
@@ -99,40 +99,42 @@ def LambdaEvolution(n, id, boson, nq):
 
 
 pathPrefix = '../../Reports/'
-foldername='LambdaPlots/'
-filename='../../Reports/solutions.txt'
+foldername = 'LambdaPlots/'
+filename = '../../Reports/solutions.txt'
+
 
 def omega(q):
     return np.sqrt(1.0 - 4.0*(np.power(q, 2)))
 
-qOmegas=np.linspace(0,0.5,100)
-omegas=[]
+
+qOmegas = GenerateQs(0, 0.5, 0.05)
+omegas = []
 for x in qOmegas:
     omegas.append(omega(x))
 
 
-
-plotname=pathPrefix+'omegaCT.pdf'
-plt.plot(qOmegas,omegas,'-b')
-plt.savefig(plotname,bbox_inches='tight')
+plotname = pathPrefix+'omegaCT.pdf'
+plt.plot(qOmegas, omegas, '-b')
+plt.savefig(plotname, bbox_inches='tight')
 plt.close()
 
+
 def ShowSolutions(n, id):
-    nqReduced=4
-    nqM=100
+    nqReduced = 4
+    nqM = 100
     for i in range(n):
-        plotname=pathPrefix+foldername +'plot-id'+str(i+1)+'.pdf'
-        fig, ax=plt.subplots()
+        plotname = pathPrefix+foldername + 'plot-id'+str(i+1)+'.pdf'
+        fig, ax = plt.subplots()
         plt.xlabel('q')
         plt.ylabel(f'$\lambda_i$')
         ax.text(0.15, 0.75, f'$\lambda_{i+1}$ | N={n}', horizontalalignment='center',
                 verticalalignment='center', transform=ax.transAxes)
         # ax.text(0.15, 0.85, f'$N={n}$', horizontalalignment='center',
         #         verticalalignment='center', transform=ax.transAxes)
-        qValues_Red=GenerateQs(nqReduced)
-        qValues_M=GenerateQs(nqM)
-        xs_Red=LambdaEvolution(n, i+1, 0, nqReduced)
-        xs_M=LambdaEvolution(n, i+1, 0, nqM)
+        qValues_Red = GenerateQs(0, 3, 0.1)
+        qValues_M = GenerateQs(0, 3, 0.05)
+        xs_Red = LambdaEvolution(n, i+1, 0, 0.1)
+        xs_M = LambdaEvolution(n, i+1, 0, 0.05)
         if(i+1 == id):
             print(f'Solution {id} for N={n}')
             print(f'Reduced | N={nqReduced}')
@@ -151,12 +153,9 @@ def ShowSolutions(n, id):
         ax.legend(loc='best')
         plt.savefig(plotname, bbox_inches='tight')
         plt.close()
-    
 
 
 ShowSolutions(10, 1)
-
-print(np.arange(0,3,0.1))
 
 # plt.plot(qValues, LambdaEvolution(10, 1, 0), '-r')
 # plt.plot(qValues, LambdaEvolution(10, 2, 0), '-b')
