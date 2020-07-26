@@ -33,35 +33,23 @@ ext = '.pdf'
 
 
 def LambdaEvolution(n, id):
-    qValues = np.arange(0, 3, 0.05)
+    qValues = np.arange(0, 3, 0.1)
     lambdas = []
     for q in qValues:
         q=round(q,3)
-        print(q)
-        # bosonH=CreateMatrix02(n,1,q)
-        # values,vectors=LA.eig(bosonH)
-        # lambdas.append(float(values[id-1]))
-    # print(lambdas)
-    # plt.plot(qValues,lambdas,'-b',label=f'$\lambda$')
-    # plotname=filename+'-'+str(id)+ext
-    # plt.savefig(plotname,bbox_inches='tight')
-    # plt.close()
-
-LambdaEvolution(10,1)
-# LambdaEvolution(10,2)
-        bosonH = CreateMatrix02(n, 1, q)
-        values, vectors = LA.eig(bosonH)
-        np.sort(values)
-        # for x in range(len(values)):
-        #     values[x]=round(values[x]
-        print(values[id-1])
-        lambdas.append(values[id-1])
-    # print(lambdas)
-    plt.plot(qValues,lambdas,'-r',label=f'$\lambda$')
+        # print(q)
+        bosonH=CreateMatrix02(n,1,q)
+        values,vectors=LA.eig(bosonH)
+        lambdas.append(float(values[id-1]))
+    for q in range(len(qValues)):
+        print(qValues[q],lambdas[q])
+    plt.plot(qValues,lambdas,'-b',label=f'$\lambda$')
     plotname=filename+'-'+str(id)+ext
     plt.savefig(plotname,bbox_inches='tight')
     plt.close()
 
 
 # LambdaEvolution(10, 1)
-LambdaEvolution(10,2)
+LambdaEvolution(10,3)
+
+# ISSUE WITH PYTHON CODE AT 1.3
