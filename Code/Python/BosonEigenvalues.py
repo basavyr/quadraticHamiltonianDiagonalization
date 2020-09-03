@@ -54,17 +54,28 @@ def Eigensystem(n, q):
     b1 = matrix[1]
     values0 = list(LA.eigvals(b0))
     values1 = list(LA.eigvals(b1))
-    values0.sort(reverse=False)
-    values1.sort(reverse=False)
-    print(values0)
-    print(values1)
+    values0.sort(reverse=True)
+    values1.sort(reverse=True)
+    # print(values0)
+    # print(values1)
     return [values0, values1]
 
 
 def GetSolution(n, q, id):
     system = Eigensystem(n, q)
-    print(system[0][id])
-    print(system[1][id])
+    return [system[0][id], system[1][id]]
+    # print(system[0][id])
+    # print(system[1][id])
 
 
-GetSolution(10, 1, 0)
+def PlotLambda(n, id):
+    qValues = np.arange(0, 3.1, 0.1)
+    lambda02 = []
+    lambda13 = []
+    for q in qValues:
+        x = GetSolution(10, q, 0)
+        lambda02.append(x[0])
+        lambda13.append(x[1])
+    return lambda02
+
+print(PlotLambda(10,0))
