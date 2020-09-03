@@ -44,8 +44,27 @@ def BosonMatrix(n, q):
     m = [m_even, m_odd]
     return m
 
-b0=BosonMatrix(3,1)[0]
-b1=BosonMatrix(3,1)[1]
+# b0=BosonMatrix(3,1)[0]
+# b1=BosonMatrix(3,1)[1]
 
-print(b0)
-print(b1)
+
+def Eigensystem(n, q):
+    matrix = BosonMatrix(n, q)
+    b0 = matrix[0]
+    b1 = matrix[1]
+    values0 = list(LA.eigvals(b0))
+    values1 = list(LA.eigvals(b1))
+    values0.sort(reverse=True)
+    values1.sort(reverse=True)
+    # print(values0)
+    # print(values1)
+    return [values0, values1]
+
+
+def GetSolution(n, q, id):
+    system = Eigensystem(n, q)
+    print(system[0][id])
+    print(system[1][id])
+
+
+GetSolution(3, 1, 0)
