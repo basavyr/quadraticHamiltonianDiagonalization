@@ -54,10 +54,10 @@ def Eigensystem(n, q):
     b1 = matrix[1]
     values0 = list(LA.eigvals(b0))
     values1 = list(LA.eigvals(b1))
-    values0.sort(reverse=True)
-    values1.sort(reverse=True)
-    # print(values0)
-    # print(values1)
+    values0.sort(reverse=False)
+    values1.sort(reverse=False)
+    print(values0)
+    print(values1)
     return [values0, values1]
 
 
@@ -67,4 +67,4 @@ def GetSolution(n, q, id):
     print(system[1][id])
 
 
-GetSolution(3, 1, 0)
+GetSolution(10, 1, 0)
