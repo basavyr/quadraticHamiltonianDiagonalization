@@ -74,7 +74,7 @@ def Eigensystem_Unordered(n, q):
     # print(values1)
     return [values0, values1]
 
-Eigensystem(10,1)
+# Eigensystem(10,1)
 Eigensystem_Unordered(10,1)
 
 

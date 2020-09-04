@@ -41,6 +41,11 @@ The two parameters that define the Hamiltonian are encoded into a single paramet
 
 Every solution of the system will be a function of this ratio, so the values of $\Lambda$ will change with the change in $q$. In the images below, one can see the evolution of the 6th and 10th solutions of the system (with truncation order N=10).
 
+## September 2020 update
+
+[info](./Reports/implementationDescr.md)
+
+<!-- 
 ___
 
 ### Solution number 6
@@ -65,4 +70,4 @@ The *fast* change in value of $\lambda$ with a slight change of $q$ needs to be 
 
 ### Evolution of solution $lambda_i$ with a change in truncation order N.
 
-![](./Resources/Images/2020-07-18-14-25-58.png)
+![](./Resources/Images/2020-07-18-14-25-58.png) -->
