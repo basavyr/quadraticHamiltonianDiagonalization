@@ -59,7 +59,7 @@ def Eigensystem(n, q):
     # print(values1)
     values0.sort(reverse=True)
     values1.sort(reverse=True)
-    # print(values0)
+    print(values0)
     # print(values1)
     return [values0, values1]
 
@@ -70,9 +70,12 @@ def Eigensystem_Unordered(n, q):
     b1 = matrix[1]
     values0 = list(LA.eigvals(b0))
     values1 = list(LA.eigvals(b1))
-    # print(values0)
+    print(values0)
     # print(values1)
     return [values0, values1]
+
+Eigensystem(10,1)
+Eigensystem_Unordered(10,1)
 
 
 def GetSolution(n, q, id):
@@ -85,6 +88,8 @@ def GetSolution(n, q, id):
 def GetUnorderedSolution(n, q, id):
     system = Eigensystem_Unordered(n, q)
     return [system[0][id], system[1][id]]
+
+
 
 
 def PlotLambda(n, id):
@@ -128,8 +133,8 @@ def PlotLambdaUnordered(n, id):
     plt.savefig(filename, bbox_inches='tight')
 
 
-for id in range(10):
-    PlotLambdaUnordered(10, id)
+# for id in range(10):
+#     PlotLambdaUnordered(10, id)
 
-for id in range(10):
-    PlotLambda(10, id)
+# for id in range(10):
+#     PlotLambda(10, id)
