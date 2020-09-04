@@ -1,5 +1,6 @@
 import numpy as np
 from numpy import linalg as LA
+import matplotlib.pyplot as plt
 
 
 def MatrixElement(n, m, e, v):
@@ -54,8 +55,21 @@ def Eigensystem(n, q):
     b1 = matrix[1]
     values0 = list(LA.eigvals(b0))
     values1 = list(LA.eigvals(b1))
+    # print(values0)
+    # print(values1)
     values0.sort(reverse=True)
     values1.sort(reverse=True)
+    # print(values0)
+    # print(values1)
+    return [values0, values1]
+
+
+def Eigensystem_Unordered(n, q):
+    matrix = BosonMatrix(n, q)
+    b0 = matrix[0]
+    b1 = matrix[1]
+    values0 = list(LA.eigvals(b0))
+    values1 = list(LA.eigvals(b1))
     # print(values0)
     # print(values1)
     return [values0, values1]
@@ -68,14 +82,54 @@ def GetSolution(n, q, id):
     # print(system[1][id])
 
 
+def GetUnorderedSolution(n, q, id):
+    system = Eigensystem_Unordered(n, q)
+    return [system[0][id], system[1][id]]
+
+
 def PlotLambda(n, id):
+    filename = '../../Reports/LambdaPlots/LambdaBosonic-'+str(id+1)+'.pdf'
     qValues = np.arange(0, 3.1, 0.1)
     lambda02 = []
     lambda13 = []
     for q in qValues:
-        x = GetSolution(10, q, 0)
+        x = GetSolution(n, q, id)
         lambda02.append(x[0])
         lambda13.append(x[1])
-    return lambda02
+    fig, ax = plt.subplots()
+    plt.xlabel(f'$q$')
+    plt.ylabel(f'$\lambda$')
+    plt.plot(qValues, lambda02, '-or', label=f'even-case')
+    plt.plot(qValues, lambda13, '-ob', label=f'odd-case')
+    plt.legend(loc='best')
+    ax.text(0.15, 0.75, f'$\lambda_{id+1}$ | N={n}', horizontalalignment='center',
+            verticalalignment='center', transform=ax.transAxes)
+    plt.savefig(filename, bbox_inches='tight')
 
-print(PlotLambda(10,0))
+
+def PlotLambdaUnordered(n, id):
+    filename = '../../Reports/LambdaPlots/LambdaDifference-'+str(id+1)+'.pdf'
+    qValues = np.arange(0, 3.1, 0.1)
+    lambda_0_ordered = []
+    lambda_0_unordered = []
+    for q in qValues:
+        x_o = GetSolution(n, q, id)
+        x_uno = GetUnorderedSolution(n, q, id)
+        lambda_0_ordered.append(x_o[0])
+        lambda_0_unordered.append(x_uno[0])
+    fig, ax = plt.subplots()
+    plt.xlabel(f'$q$')
+    plt.ylabel(f'$\lambda$')
+    plt.plot(qValues, lambda_0_ordered, '-or', label=f'ordered')
+    plt.plot(qValues, lambda_0_unordered, '-ob', label=f'unordered')
+    plt.legend(loc='best')
+    ax.text(0.15, 0.75, f'$\lambda_{id+1}$ | N={n}', horizontalalignment='center',
+            verticalalignment='center', transform=ax.transAxes)
+    plt.savefig(filename, bbox_inches='tight')
+
+
+for id in range(10):
+    PlotLambdaUnordered(10, id)
+
+for id in range(10):
+    PlotLambda(10, id)
