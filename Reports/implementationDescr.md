@@ -42,6 +42,11 @@ Mathematica:
 
 Due to this difference in the solution ordering, a consistent approach is required; as a result, the lambdas are evaluated and stored in decreasing order.
 
-![](lambda_comparison.jpeg)
+![X](lambda_comparison.jpeg)
 
 The plot shown above describes how the difference in the lambda-ordering is taking place within Mathematica's implementation.
+
+Both algorithms (`py3` and `math`) behave inherently different within their way of finding the eigenvalues (and, if necessary, the eigenvectors). This can be seen in the figure below, where default lists of $lambda$ for a given $N$ and $q$ (e.g. $N=10$ and $q=3).
+
+![X](unorder_lambda_comparison.jpg)
+

@@ -71,11 +71,18 @@ def Eigensystem_Unordered(n, q):
     values0 = list(LA.eigvals(b0))
     values1 = list(LA.eigvals(b1))
     print(values0)
+    file = open('../../Reports/output_lambdas.txt', 'w')
     # print(values1)
+    for x_val in values0:
+        file.write(str(x_val))
+        if(x_val != values0[len(values0)-1]):
+            file.write(',')
+
     return [values0, values1]
 
+
 # Eigensystem(10,1)
-Eigensystem_Unordered(10,1)
+Eigensystem_Unordered(10, 3)
 
 
 def GetSolution(n, q, id):
@@ -88,8 +95,6 @@ def GetSolution(n, q, id):
 def GetUnorderedSolution(n, q, id):
     system = Eigensystem_Unordered(n, q)
     return [system[0][id], system[1][id]]
-
-
 
 
 def PlotLambda(n, id):
