@@ -46,7 +46,10 @@ Due to this difference in the solution ordering, a consistent approach is requir
 
 The plot shown above describes how the difference in the lambda-ordering is taking place within Mathematica's implementation.
 
-Both algorithms (`py3` and `math`) behave inherently different within their way of finding the eigenvalues (and, if necessary, the eigenvectors). This can be seen in the figure below, where default lists of $lambda$ for a given $N$ and $q$ (e.g. $N=10$ and $q=3).
+Both algorithms (`py3` and `math`) behave inherently different within their way of finding the eigenvalues (and, if necessary, the eigenvectors). This can be seen in the figure below, where default lists of $\lambda$ for a given $N$ and $q$ (e.g. $N=10$ and $q=3$).
 
 ![X](unorder_lambda_comparison.jpg)
 
+Furthermore, lambda evaluation made by python's numerical implementation: `linalg` is also producing inconsistencies in the output of such values with respect to a fixed $q$ parameter. This behavior can be seen in the figure below.
+
+![](python3_lambdas.jpeg)
