@@ -43,7 +43,17 @@ Every solution of the system will be a function of this ratio, so the values of 
 
 ## September 2020 update
 
-[info](./Reports/implementationDescr.md)
+[This](./Reports/implementationDescr.md) page describes in detail how the numerical implementation works.
+The latest updates fixed an inconsistency in the eigenvalue behavior with respect to the $q$-parameter. Every $\lambda$ which belongs to the physical solutions of the Hamiltonian $H$ (with $N$-truncation order and $q$ parameter) has a well-defined evolution, and both Python as well as Mathematica implementations can graphically represent each $\lambda_i=f(q)$
+with $i=1,\dots,N$.
+
+## Graphical representation of the eigenvalues of $H$
+
+This example shown below is for a Hamiltonian with $N=10$ truncation order (which means that the first 10 even and odd, respectively, states are considered in the matrix associated to $H$).
+
+The evolution of $\lambda_5$, the fifth solution of $H(10)$ is evaluated for the interval $\in[0,3]$. Both the even case as well as the odd case are shown.
+
+![](Reports/LambdaPlots/LambdaBosonic-5.jpeg)
 
 <!-- 
 ___

@@ -98,7 +98,7 @@ def GetUnorderedSolution(n, q, id):
 
 
 def PlotLambda(n, id):
-    filename = '../../Reports/LambdaPlots/LambdaBosonic-'+str(id+1)+'.pdf'
+    filename = '../../Reports/LambdaPlots/LambdaBosonic-'+str(id+1)+'.jpeg'
     qValues = np.arange(0, 3.1, 0.1)
     lambda02 = []
     lambda13 = []
@@ -140,6 +140,8 @@ def PlotLambdaUnordered(n, id):
 
 # for id in range(10):
 #     PlotLambdaUnordered(10, id)
+
+PlotLambda(10,4)
 
 # for id in range(10):
 #     PlotLambda(10, id)
