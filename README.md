@@ -55,6 +55,14 @@ The evolution of $\lambda_5$, the fifth solution of $H(10)$ is evaluated for the
 
 ![](Reports/LambdaPlots/LambdaBosonic-5.jpeg)
 
+### Future update plan
+
+[ ] - Update the python implementation with a grid plot.
+
+An example of grid plot can be seen below. Core implementation has been done.
+
+![](Reports/grid_plot.jpeg)
+
 <!-- 
 ___
 
