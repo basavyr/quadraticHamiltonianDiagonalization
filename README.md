@@ -59,7 +59,7 @@ The evolution of $\lambda_5$, the fifth solution of $H(10)$ is evaluated for the
 
 [ ] - Update the python implementation with a grid plot.
 
-An example of grid plot can be seen below. Core implementation has been done.
+An example of grid plot can be seen below. Core implementation has been done. [Source](https://matplotlib.org/3.1.1/gallery/pyplots/pyplot_scales.html#sphx-glr-gallery-pyplots-pyplot-scales-py)
 
 ![](Reports/grid_plot.jpeg)
 
