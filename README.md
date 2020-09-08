@@ -55,13 +55,19 @@ The evolution of $\lambda_5$, the fifth solution of $H(10)$ is evaluated for the
 
 ![](Reports/LambdaPlots/LambdaBosonic-5.jpeg)
 
-### Future update plan
+### Grid Plot implementation with `Py3`
 
-[ ] - Update the python implementation with a grid plot.
+This implementation is used for a graphical representation (in a batch-manner) of the eigenvalues of the boson Hamiltonian.
+
+[x] - Update the python implementation with a grid plot.
 
 An example of grid plot can be seen below. Core implementation has been done. [Source](https://matplotlib.org/3.1.1/gallery/pyplots/pyplot_scales.html#sphx-glr-gallery-pyplots-pyplot-scales-py)
 
 ![](Reports/grid_plot.jpeg)
+
+Actual grid plot implementation can be seen in [this](https://github.com/basavyr/quadraticHamiltonianDiagonalization/commit/690f76506f55a2cc54f2ec993e7c92f1b206f789) commit. The data structure to be used for importing into the plot function has the following structure:
+
+![](Reports/GridPlot_dataformat.jpg)
 
 <!-- 
 ___

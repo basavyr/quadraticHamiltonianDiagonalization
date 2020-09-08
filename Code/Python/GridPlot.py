@@ -12,10 +12,10 @@ def give_array(n, param):
     return [list(x), y]
 
 
-def CreateGridPlot(n):
-    params = [1, 2, 3, 4]
-    array_dim = 10
-    data = GenerateData(2*n)
+def CreateGridPlot(n, data):
+    # params = [1, 2, 3, 4]
+    # array_dim = 10
+    # data = GenerateData(2*n)
     # data = give_array(20, rd.choice(params))
     x = data[0]
     # x = give_array(array_dim, rd.choice(params))[0]
@@ -28,12 +28,12 @@ def CreateGridPlot(n):
         for j in range(n):
             y = data[1][count]
             # y = give_array(array_dim, rd.choice(params))[1]
-            p = round(np.mean(y),3)
+            p = round(np.mean(y), 3)
             ax[i, j].plot(x, y, '-k')
             ax[i, j].plot(x, y, 'or')
-            ax[i, j].text(0.15, 0.75, f'$\mu$={p}', horizontalalignment='center',
-                          verticalalignment='center', transform=ax[i, j].transAxes)
-            ax[i, j].set_title(f'$\lambda{(i+1,j+1)}$')
+            ax[i, j].text(0.25, 0.75, f'$\mu$={p}', horizontalalignment='center',
+                          verticalalignment='center', transform=ax[i, j].transAxes,fontsize=8)
+            # ax[i, j].set_title(f'$\lambda{(i+1,j+1)}$')
             count = count+1
     for ax_id in ax.flat:
         ax_id.set(xlabel=f'$q$', ylabel=f'$\lambda$')
@@ -126,13 +126,13 @@ def CreateGridPlot(n):
 
 
 def GenerateData(n):
-    params = [1, 2, 3, 4]
+    params = [1, 2, 3, 4, 5, 6]
     # xvalues
     qvalues = np.arange(0, 3.1, 0.5)
     # yvalues
     yvalues = []
     for id in range(n):
-        y = map(lambda x: rd.choice(params)*x*x, qvalues)
+        y = map(lambda x: np.power(x, rd.choice(params)), qvalues)
         yvalues.append(list(y))
     return [list(qvalues), yvalues]
 
@@ -140,4 +140,9 @@ def GenerateData(n):
 # print(f[0])
 # for id in range(len(f[1])):
 #     print(f[1][id])
-CreateGridPlot(2)
+
+# Actual representation of the eigenvalues of H
+nplots = 3 # holds up to n^2 solutions (e.g. for n=3, the first 9 solutions can be graphically represented)
+data = GenerateData(nplots*nplots)
+
+CreateGridPlot(nplots, data)
