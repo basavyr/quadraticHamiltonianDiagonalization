@@ -1,16 +1,6 @@
 import csv as csv
 import numpy as np
 
-
-def ReadFile(filename):
-    with open(filename) as csv_file:
-        csv_reader = csv.reader(csv_file, delimiter=',')
-        line_count = 0
-        for row in csv_reader:
-            line_count += 1
-        print(f'Processed {line_count} lines.')
-
-
 def GenerateFileNames(n, file_id):
     names = []
     for id in range(n):
@@ -20,6 +10,14 @@ def GenerateFileNames(n, file_id):
 
 
 filenames = GenerateFileNames(10, 'Lambda-idx')
+
+def ReadFile(filename):
+    with open(filename) as csv_file:
+        csv_reader = csv.reader(csv_file, delimiter=',')
+        line_count = 0
+        for row in csv_reader:
+            line_count += 1
+        print(f'Processed {line_count} lines.')
 
 for file_id in filenames:
     ReadFile(file_id)
