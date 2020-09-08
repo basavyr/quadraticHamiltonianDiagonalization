@@ -59,7 +59,7 @@ def Eigensystem(n, q):
     # print(values1)
     values0.sort(reverse=True)
     values1.sort(reverse=True)
-    print(values0)
+    # print(values0)
     # print(values1)
     return [values0, values1]
 
@@ -81,8 +81,8 @@ def Eigensystem_Unordered(n, q):
     return [values0, values1]
 
 
-Eigensystem(10,3)
-Eigensystem_Unordered(10, 3)
+# Eigensystem(10,3)
+# Eigensystem_Unordered(10, 3)
 
 
 def GetSolution(n, q, id):
@@ -98,14 +98,19 @@ def GetUnorderedSolution(n, q, id):
 
 
 def PlotLambda(n, id):
-    filename = '../../Reports/LambdaPlots/LambdaBosonic-'+str(id+1)+'.jpeg'
+    print('Program STARTED plotting the solutions...')
+    filename = '../../Reports/LambdaPlots/LambdaBosonic-'+str(id+1)+'.pdf'
     qValues = np.arange(0, 3.1, 0.1)
     lambda02 = []
     lambda13 = []
+    csv_filename = '../../Reports/LambdaOutput/Lambda-idx-'+str(id+1)+'.csv'
+    csv_file = open(csv_filename,'w')
     for q in qValues:
         x = GetSolution(n, q, id)
         lambda02.append(x[0])
         lambda13.append(x[1])
+        csv_file.write(str(q)+','+str(x[0])+','+str(x[1])+'\n')
+    csv_file.close()
     fig, ax = plt.subplots()
     plt.xlabel(f'$q$')
     plt.ylabel(f'$\lambda$')
@@ -115,6 +120,7 @@ def PlotLambda(n, id):
     ax.text(0.15, 0.75, f'$\lambda_{id+1}$ | N={n}', horizontalalignment='center',
             verticalalignment='center', transform=ax.transAxes)
     plt.savefig(filename, bbox_inches='tight')
+    print('Program FINISHED plotting the solutions...')
 
 
 def PlotLambdaUnordered(n, id):
@@ -141,7 +147,7 @@ def PlotLambdaUnordered(n, id):
 # for id in range(10):
 #     PlotLambdaUnordered(10, id)
 
-PlotLambda(10,4)
+# PlotLambda(10,4)
 
-# for id in range(10):
-#     PlotLambda(10, id)
+for id in range(10):
+    PlotLambda(10, id)
