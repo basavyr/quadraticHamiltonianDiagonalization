@@ -4,7 +4,7 @@ import numpy as np
 # used [this](https://www.digitalocean.com/community/tutorials/how-to-write-modules-in-python-3) tutorial for working with external modules as GridPlot and the EigenValues
 
 # import BosonEigenvalues as bos
-# import GridPlot as grid
+import GridPlot as grid
 
 
 def GenerateFileNames(n, file_id):
@@ -37,19 +37,27 @@ def ReadFile(filenames, n):
         with open(filename) as csv_file:
             csv_reader = csv.reader(csv_file, delimiter=',')
             for row in csv_reader:
-                lamda_local.append(float(row[1]))
+                lamda_local.append(round(float(row[1]), 3))
                 # lamda_local.append(qvalues[count])
         lambdas.append(lamda_local)
         count = count+1
-    # print(lambdas)
 
-    # data = [qvalues, lambdas]
-    print(f'Only {n} arrays will be stored in the container...')
-    return lambdas
+    # # solutions container before trimming
+    # print(f'Before trimming: \n {lambdas}\n')
+
+    # # solutions container after trimming
+    # print(f'After trimming: \n {lambdas[:n]}\n')
+
+    # data trimming
+    lambdas = lambdas[:n]
+
+    data = [qvalues, lambdas]
+    return data
 
 
-n_grid = 3
-ReadFile(filenames, n_grid*n_grid)
+plot_grid_size = 3
+data_to_grid = ReadFile(filenames, plot_grid_size*plot_grid_size)
 
+# print(data_to_grid)
 
-# grid.CreateGridPlot(2,)
+grid.CreateGridPlot(plot_grid_size, data_to_grid)

@@ -145,4 +145,4 @@ def GenerateData(n):
 nplots = 3 # holds up to n^2 solutions (e.g. for n=3, the first 9 solutions can be graphically represented)
 data = GenerateData(nplots*nplots)
 
-CreateGridPlot(nplots, data)
+# CreateGridPlot(nplots, data)
