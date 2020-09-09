@@ -5,6 +5,8 @@ import numpy as np
 
 # import BosonEigenvalues as bos
 # import GridPlot as grid
+
+
 def GenerateFileNames(n, file_id):
     names = []
     for id in range(n):
@@ -16,7 +18,7 @@ def GenerateFileNames(n, file_id):
 filenames = GenerateFileNames(10, 'Lambda-idx')
 
 
-def ReadFile(filenames):
+def ReadFile(filenames, n):
     qvalues = []
     lambdas = []
 
@@ -39,11 +41,15 @@ def ReadFile(filenames):
                 # lamda_local.append(qvalues[count])
         lambdas.append(lamda_local)
         count = count+1
-    data = [qvalues, lambdas]
-    print(data)
-    return data
+    # print(lambdas)
+
+    # data = [qvalues, lambdas]
+    print(f'Only {n} arrays will be stored in the container...')
+    return lambdas
 
 
-ReadFile(filenames)
+n_grid = 3
+ReadFile(filenames, n_grid*n_grid)
+
 
 # grid.CreateGridPlot(2,)
