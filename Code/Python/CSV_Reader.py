@@ -71,6 +71,6 @@ def ReadFile(filenames, n):
 plot_grid_size = 3
 data_to_grid = ReadFile(filenames, plot_grid_size*plot_grid_size)
 
-print(data_to_grid)
+# print(data_to_grid)
 
-# grid.CreateGridPlot(plot_grid_size, data_to_grid)
+grid.CreateGridPlot(plot_grid_size, data_to_grid)
