@@ -80,7 +80,7 @@ def ReadFile(filenames, n):
     return sampled_data
 
 
-plot_grid_size = 3
+plot_grid_size = 1
 data_to_grid = ReadFile(filenames, plot_grid_size*plot_grid_size)
 
 # print(data_to_grid)
