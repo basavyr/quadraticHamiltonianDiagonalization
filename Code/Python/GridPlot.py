@@ -29,10 +29,10 @@ def CreateGridPlot(n, data):
             y = data[1][count]
             # y = give_array(array_dim, rd.choice(params))[1]
             p = round(np.mean(y), 3)
-            ax[i, j].plot(x, y, '-k')
-            ax[i, j].plot(x, y, 'or')
+            ax[i, j].plot(x, y, '-k', markersize=1)
+            ax[i, j].plot(x, y, 'or', markersize=1)
             ax[i, j].text(0.25, 0.75, f'$\mu$={p}', horizontalalignment='center',
-                          verticalalignment='center', transform=ax[i, j].transAxes,fontsize=8)
+                          verticalalignment='center', transform=ax[i, j].transAxes, fontsize=8)
             # ax[i, j].set_title(f'$\lambda{(i+1,j+1)}$')
             count = count+1
     for ax_id in ax.flat:
@@ -142,7 +142,8 @@ def GenerateData(n):
 #     print(f[1][id])
 
 # Actual representation of the eigenvalues of H
-nplots = 3 # holds up to n^2 solutions (e.g. for n=3, the first 9 solutions can be graphically represented)
+# holds up to n^2 solutions (e.g. for n=3, the first 9 solutions can be graphically represented)
+nplots = 3
 data = GenerateData(nplots*nplots)
 
 # CreateGridPlot(nplots, data)

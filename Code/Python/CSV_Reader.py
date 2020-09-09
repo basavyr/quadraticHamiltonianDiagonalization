@@ -51,13 +51,26 @@ def ReadFile(filenames, n):
     # data trimming
     lambdas = lambdas[:n]
 
+    # generate the container for storing each solution of the Boson Hamiltonian
     data = [qvalues, lambdas]
-    return data
+
+    # create a data sampling, storing less values in a reduced size container
+    sampled_data = []
+    size = len(qvalues)
+    cutting_factor = 4
+    sampled_q = qvalues[::cutting_factor]
+    sampled_lambdas = []
+    for id_x in range(len(lambdas)):
+        sampled_lambdas.append(lambdas[id_x][::cutting_factor])
+    # return [len(sampled_q), len(sampled_lambdas[0])]
+
+    sampled_data = [sampled_q, sampled_lambdas]
+    return sampled_data
 
 
 plot_grid_size = 3
 data_to_grid = ReadFile(filenames, plot_grid_size*plot_grid_size)
 
-# print(data_to_grid)
+print(data_to_grid)
 
-grid.CreateGridPlot(plot_grid_size, data_to_grid)
+# grid.CreateGridPlot(plot_grid_size, data_to_grid)
