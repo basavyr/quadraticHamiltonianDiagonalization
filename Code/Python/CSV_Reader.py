@@ -20,7 +20,10 @@ filenames = GenerateFileNames(10, 'Lambda-idx')
 
 def ReadFile(filenames, n):
     qvalues = []
+    # store the even values for lambda
     lambdas = []
+    # store the odd values for lambda
+    odd_lambdas = []
 
     # first create q-array
     # this can be done in a single loop, since the values of the q-parameter are the same across each file.
@@ -33,13 +36,16 @@ def ReadFile(filenames, n):
     # array of arrays, where each sub-array contains all the values of lambda_id, evaluated at certain q
     count = 0
     for filename in filenames:
-        lamda_local = []
+        lambda_local = []
+        odd_lambda_local = []
         with open(filename) as csv_file:
             csv_reader = csv.reader(csv_file, delimiter=',')
             for row in csv_reader:
-                lamda_local.append(round(float(row[1]), 3))
+                lambda_local.append(round(float(row[1]), 3))
+                odd_lambda_local.append(round(float(row[2]), 3))
                 # lamda_local.append(qvalues[count])
-        lambdas.append(lamda_local)
+        lambdas.append(lambda_local)
+        odd_lambdas.append(odd_lambda_local)
         count = count+1
 
     # # solutions container before trimming
@@ -51,8 +57,11 @@ def ReadFile(filenames, n):
     # data trimming
     lambdas = lambdas[:n]
 
+    odd_lambdas = odd_lambdas[:n]
+
+    # print(len(lambdas), len(odd_lambdas))
     # generate the container for storing each solution of the Boson Hamiltonian
-    data = [qvalues, lambdas]
+    data = [qvalues, lambdas, odd_lambdas]
 
     # create a data sampling, storing less values in a reduced size container
     sampled_data = []
@@ -60,11 +69,14 @@ def ReadFile(filenames, n):
     cutting_factor = 4
     sampled_q = qvalues[::cutting_factor]
     sampled_lambdas = []
+    sampled_odd_lambdas = []
     for id_x in range(len(lambdas)):
         sampled_lambdas.append(lambdas[id_x][::cutting_factor])
-    # return [len(sampled_q), len(sampled_lambdas[0])]
+        sampled_odd_lambdas.append(odd_lambdas[id_x][::cutting_factor])
 
-    sampled_data = [sampled_q, sampled_lambdas]
+        # return [len(sampled_q), len(sampled_lambdas[0])]
+
+    sampled_data = [sampled_q, sampled_lambdas, sampled_odd_lambdas]
     return sampled_data
 
 
