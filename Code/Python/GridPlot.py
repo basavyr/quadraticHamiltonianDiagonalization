@@ -12,7 +12,28 @@ def give_array(n, param):
     return [list(x), y]
 
 
+def OneD_GridPlot(data):
+    x = data[0]
+    # print(x)
+
+    y = data[1][0]
+    # print(y)
+
+    fig, ax = plt.subplots(1, 1)
+    fig.suptitle(f'$\lambda$ evolution with $\epsilon/v$', fontsize=14)
+
+    ax.plot(x, y, '-or')
+
+    ax.set(xlabel=f'$\epsilon/V$')
+    fig.tight_layout()
+    fig.subplots_adjust(top=0.85)
+    plt.savefig('../../Reports/one_grid.pdf', bbox_inches='tight')
+
+
 def CreateGridPlot(n, data):
+    if(n == 1):
+        OneD_GridPlot(data)
+        return
     # params = [1, 2, 3, 4]
     # array_dim = 10
     # data = GenerateData(2*n)
@@ -136,7 +157,7 @@ def CreateGridPlot(n, data):
 def GenerateData(n):
     params = [1, 2, 3, 4, 5, 6]
     # xvalues
-    qvalues = np.arange(0, 3.1, 0.5)
+    qvalues = np.arange(0, 3.1, 0.2)
     # yvalues
     yvalues = []
     for id in range(n):
@@ -151,7 +172,8 @@ def GenerateData(n):
 
 # Actual representation of the eigenvalues of H
 # holds up to n^2 solutions (e.g. for n=3, the first 9 solutions can be graphically represented)
-nplots = 3
+nplots = 1
 data = GenerateData(nplots*nplots)
+# OneD_GridPlot(data)
 
 # CreateGridPlot(nplots, data)
