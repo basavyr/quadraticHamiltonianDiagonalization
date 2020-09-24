@@ -12,7 +12,28 @@ def give_array(n, param):
     return [list(x), y]
 
 
+def OneD_GridPlot(data):
+    x = data[0]
+    # print(x)
+
+    y = data[1][0]
+    # print(y)
+
+    fig, ax = plt.subplots(1, 1)
+    fig.suptitle(f'$\lambda$ evolution with $\epsilon/v$', fontsize=14)
+
+    ax.plot(x, y, '-or')
+
+    ax.set(xlabel=f'$\epsilon/V$')
+    fig.tight_layout()
+    fig.subplots_adjust(top=0.85)
+    plt.savefig('../../Reports/one_grid.pdf', bbox_inches='tight')
+
+
 def CreateGridPlot(n, data):
+    if(n == 1):
+        OneD_GridPlot(data)
+        return
     # params = [1, 2, 3, 4]
     # array_dim = 10
     # data = GenerateData(2*n)
@@ -21,40 +42,48 @@ def CreateGridPlot(n, data):
     # x = give_array(array_dim, rd.choice(params))[0]
 
     fig, ax = plt.subplots(n, n)
-    fig.suptitle(f'$\lambda$ evolution with $q$-value', fontsize=14)
+    fig.suptitle(f'$\lambda$ evolution with $\epsilon/v$', fontsize=14)
 
     count = 0
     for i in range(n):
         for j in range(n):
             y = data[1][count]
+            y_odd = data[2][count]
+            # print(y_odd)
             # y = give_array(array_dim, rd.choice(params))[1]
             p = round(np.mean(y), 3)
-            ax[i, j].plot(x, y, '-k')
-            ax[i, j].plot(x, y, 'or')
-            ax[i, j].text(0.25, 0.75, f'$\mu$={p}', horizontalalignment='center',
-                          verticalalignment='center', transform=ax[i, j].transAxes,fontsize=8)
+            ax[i, j].plot(x, y, '-r', linewidth=2)
+            ax[i, j].plot(x, y, 'or', markersize=3)
+            ax[i, j].plot(x, y_odd, '-b', linewidth=2)
+            ax[i, j].plot(x, y_odd, 'ob', markersize=3)
+            ax[i, j].text(0.25, 0.75, f'$\lambda_{count+1}$', horizontalalignment='center',
+                          verticalalignment='center', transform=ax[i, j].transAxes, fontsize=8)
             # ax[i, j].set_title(f'$\lambda{(i+1,j+1)}$')
             count = count+1
     for ax_id in ax.flat:
-        ax_id.set(xlabel=f'$q$', ylabel=f'$\lambda$')
+        # ax_id.set(xlabel=f'$q$', ylabel=f'$\lambda$')
+        ax_id.set(xlabel=f'$\epsilon/V$')
+        # xx=ax_id.get_yticks()
+        # print(xx)
+        ax_id.set_xticks(np.arange(0, 3.1, step=1))
+        # xticks(np.arange(0, 1, step=0.2))
 
-    # y = give_array(5, rd.choice(params))[1]
-    # ax[0, 1].plot(x, y, '-k')
-    # ax[0, 1].plot(x, y, 'or')
-    # ax[0, 1].text(0.15, 0.75, 'N', horizontalalignment='center',
-    #               verticalalignment='center', transform=ax[0,1].transAxes)
-    # ax[0, 1].set_title(f'$\lambda_{n}$')
+        # y = give_array(5, rd.choice(params))[1]
+        # ax[0, 1].plot(x, y, '-k')
+        # ax[0, 1].plot(x, y, 'or')
+        # ax[0, 1].text(0.15, 0.75, 'N', horizontalalignment='center',
+        #               verticalalignment='center', transform=ax[0,1].transAxes)
+        # ax[0, 1].set_title(f'$\lambda_{n}$')
 
-    # # Fine-tune figure; hide x ticks for top plots and y ticks for right plots
-    # plt.setp([a.get_xticklabels() for a in ax[0, :]], visible=False)
-    # plt.setp([a.get_yticklabels() for a in ax[:, 1]], visible=False)
+        # # Fine-tune figure; hide x ticks for top plots and y ticks for right plots
+        # plt.setp([a.get_xticklabels() for a in ax[0, :]], visible=False)
+        # plt.setp([a.get_yticklabels() for a in ax[:, 1]], visible=False)
 
-
-# Tight layout often produces nice results
-# but requires the title to be spaced accordingly
+        # Tight layout often produces nice results
+        # but requires the title to be spaced accordingly
     fig.tight_layout()
     fig.subplots_adjust(top=0.85)
-    plt.savefig('../../Reports/grid_plot.jpeg', bbox_inches='tight')
+    plt.savefig('../../Reports/grid_plot.pdf', bbox_inches='tight')
 
     # plt.show()
 
@@ -128,7 +157,7 @@ def CreateGridPlot(n, data):
 def GenerateData(n):
     params = [1, 2, 3, 4, 5, 6]
     # xvalues
-    qvalues = np.arange(0, 3.1, 0.5)
+    qvalues = np.arange(0, 3.1, 0.2)
     # yvalues
     yvalues = []
     for id in range(n):
@@ -142,7 +171,9 @@ def GenerateData(n):
 #     print(f[1][id])
 
 # Actual representation of the eigenvalues of H
-nplots = 3 # holds up to n^2 solutions (e.g. for n=3, the first 9 solutions can be graphically represented)
+# holds up to n^2 solutions (e.g. for n=3, the first 9 solutions can be graphically represented)
+nplots = 1
 data = GenerateData(nplots*nplots)
+# OneD_GridPlot(data)
 
-CreateGridPlot(nplots, data)
+# CreateGridPlot(nplots, data)
